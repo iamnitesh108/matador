@@ -1460,8 +1460,8 @@
 
     <!-- <div class="scroll-indicator">
       <span>Scroll to explore</span>
-      <div class="scroll-arrow"></div>
-    </div> -->
+      <div class="scroll-arrow"></div> -->
+    </div>
   </section>
 
   <!-- About Section -->
@@ -1654,7 +1654,8 @@
         
         <div class="contact-form">
           <h3>Send us a Message</h3>
-          <form id="contactForm">
+          <!-- Updated form to use mailto: action -->
+          <form id="contactForm" action="mailto:iamnitesh108@gmail.com" method="post" enctype="text/plain">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" required>
@@ -1671,6 +1672,8 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" required placeholder="Tell us about your fitness goals..."></textarea>
             </div>
+            <!-- Added a hidden input for email subject -->
+            <input type="hidden" name="subject" value="New Message from Matador Fitness Website">
             <button type="submit" class="submit-btn">Send Message</button>
           </form>
         </div>
@@ -1905,34 +1908,19 @@
       // Enhanced form handling for contact form
       const contactForm = document.getElementById('contactForm');
       contactForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent default form submission
-
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        // Only prevent default if we're doing client-side validation for mailto
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
 
         if (!name || !email || !message) {
+          e.preventDefault(); // Prevent mailto if fields are empty
           showNotification('Please fill in all required fields.', 'error');
-          return;
+        } else {
+          // The form's action="mailto:..." will handle the submission
+          // No need for client-side loading state or success notification here
+          // as the email client will open.
         }
-
-        const submitBtn = this.querySelector('.submit-btn');
-        const originalText = submitBtn.textContent;
-        
-        // Show loading state on button
-        submitBtn.innerHTML = 'Sending... ⏳';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.7';
-
-        // Simulate form submission delay
-        setTimeout(() => {
-          showNotification('Thank you for your message! We will get back to you soon.', 'success');
-          this.reset(); // Reset form fields
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-        }, 2000);
       });
 
       // Custom notification system
@@ -2266,11 +2254,6 @@
         scrollToTop.style.transform = 'translateY(0) scale(1)';
         scrollToTop.style.boxShadow = 'var(--shadow)';
       });
-
-      // Removed the aggressive animation duration override for mobile
-      // The default CSS transitions and animations should provide a smoother experience.
-
-   
     });
   </script>
 </body>
