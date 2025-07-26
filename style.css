@@ -1,0 +1,107 @@
+/* Modern Styling for Matador Fitness & GYM */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #111;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background: #e9ecef;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero img {
+  margin-top: 1.5rem;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.about,
+.services,
+.trainers,
+.contact {
+  padding: 2rem;
+  background-color: #fff;
+  margin: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  color: #111;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #dc3545;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.trainer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.trainer-card {
+  background: #f1f1f1;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.trainer-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #111;
+  color: #fff;
+  margin-top: 2rem;
+}
